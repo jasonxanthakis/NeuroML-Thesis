@@ -1,0 +1,2 @@
+python MD-script.py -model Hay2011L5bPyramidalCell -netfile generatedNeuroML2/TestL5PC.net.nml \
+                    -cellfile generatedNeuroML2/L5PC.cell.nml -lemsfile generatedNeuroML2/LEMS_TestL5PC.xml
