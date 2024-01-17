@@ -1,7 +1,7 @@
 nsimenv3
 *.code-workspace
-generatedNeuroML2
-neuroConstruct
+HayModel
+BahlModel
 *.dat
 *.mod
 *.hoc

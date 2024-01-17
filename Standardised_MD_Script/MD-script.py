@@ -76,14 +76,14 @@ def command_line_parser():
 
 def generate_morphology(file, name, save = True, nogui = False):
     if save:
-        file = "imgs/" + name + ".png"
+        filename = "imgs/" + name + ".png"
     else:
-        file = None
+        filename = None
 
     PlotMorphology.plot_2D(
         file,
         nogui = nogui,
-        save_to_file = "imgs/" + name + ".png",
+        save_to_file = filename,
         title = name
         )
 
@@ -169,7 +169,8 @@ def generate_if_iv_custom(file, name, cell, custom = [-0.5,0,0.5,1], time = 0.02
         analysis_delay = delay,
         save_voltage_traces_to = vt_name,
         pre_zero_pulse = pre,
-        post_zero_pulse = post
+        post_zero_pulse = post,
+        font_size=10
         )
 
 def generate_custom_plot(dat_file, delay = False, save = False, nogui = False):
@@ -198,7 +199,7 @@ if __name__ == "__main__":
     
     #NeuroML and LEMS files
     name = args.model
-    file_name = name + ".md"
+    file_name = "MD_Files/" + name + ".md"
     file = args.netfile
     cell_file = args.cellfile
     lems_file = args.lemsfile
@@ -207,7 +208,7 @@ if __name__ == "__main__":
     lems_model = read_lems_file(lems_file, include_includes=True)
     nml_doc = read_neuroml2_file(cell_file, include_includes=True)
     cell = nml_doc.cells[0]
-    print('%s %s' %(cell.id, cell.notes))
+    #print('%s %s' %(cell.id, cell.notes))
     print(cell.id)
     
     #Get Metadata
@@ -216,14 +217,14 @@ if __name__ == "__main__":
 
     if not args.nosim:
         #Plot Morphology
-        #generate_morphology(file, name, save = False, nogui = False)
+        #generate_morphology(file, name, save = True, nogui = True)
 
         #Channel Analysis
         #run_channel_analysis(channels, save = False, nogui = False)
 
         #IV & IF Curves
-        generate_if_iv(file, name, cell.id, save = True, nogui = False, pre = 200, post = 200)
-        generate_if_iv_custom(file, name, cell.id, custom = [-1.0, -0.5, -0.2, 1.0], save = True, pre = 200, post = 200, nogui = False)
+        #generate_if_iv(file, name, cell.id, save = True, nogui = False, pre = 200, post = 200)
+        #generate_if_iv_custom(file, name, cell.id, custom = [-1.0, -0.5, 1.0], save = True, pre = 200, post = 200, nogui = False)
 
         pass
 
@@ -236,8 +237,7 @@ if __name__ == "__main__":
 
         with open(file_name, "w") as file:
             file.write("# " + name + "\n\n")  #Write Cell Name
-            file.write("%s %s" %(cell.id, cell.notes) + "\n\n")
-            file.write('<img src="imgs/' + name + '.png" height="300" />' + "\n\n")
+            file.write('<img src="../imgs/' + name + '.png" height="300" />' + "\n\n")
             #Add 3D Morphology
             #file.write("")
             
@@ -253,9 +253,9 @@ if __name__ == "__main__":
             #file.write("")
 
             file.write("# Electrophysiology" + "\n\n")
-            file.write('<img src="imgs/' + name + '_Vtraces.png" />' + "\n\n")
-            file.write('<img src="imgs/' + name + 'IF.png" />' + "\n\n")
-            file.write('<img src="imgs/' + name + 'IV.png" />' + "\n\n")
+            file.write('<img src="../imgs/' + name + '_Vtraces.png" />' + "\n\n")
+            file.write('<img src="../imgs/' + name + 'IF.png" />' + "\n\n")
+            file.write('<img src="../imgs/' + name + 'IV.png" />' + "\n\n")
             #Add Voltage Traces
 
     print("\n")
