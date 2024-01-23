@@ -5,5 +5,7 @@ BahlModel
 *.dat
 *.mod
 *.hoc
+*.xml
 x86_64
 clear-folder*
+channel_summary
