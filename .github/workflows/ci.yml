@@ -40,6 +40,11 @@ jobs:
         git clone https://github.com/OpenSourceBrain/BahlEtAl2012_ReducedL5PyrCell.git
         cp BahlEtAl2012_ReducedL5PyrCell/NeuroML2/*ml Standardised_MD_Script/BahlModel
 
+        
+        git clone https://github.com/sanjayankur31/Human-L2-3-Cortical-Microcircuit
+        git checkout feat/neuroml
+        mv Human-L2-3-Cortical-Microcircuit Standardised_MD_Script/Yao_2022_Model
+
         find .
 
     - name: Test generation
