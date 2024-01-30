@@ -34,7 +34,7 @@ jobs:
       
         mkdir HayModel
         git clone https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011.git
-        cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*nml HayModel
+        cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*ml HayModel
 
         find .
 
