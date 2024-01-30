@@ -1,0 +1,35 @@
+name: Run tests
+
+on:
+  push:
+    branches: [ main, development, *test* ]
+  pull_request:
+    branches: [ main, development, *test* ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ 3.9, "3.10" ]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python  ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version:  ${{ matrix.python-version }}
+
+    - name: Install NeuroML etc.
+      run: |
+
+        pip install pyneuroml 
+        pip install neuron
+
+    - name: Final version info
+      run: |
+        pip list
+        env
