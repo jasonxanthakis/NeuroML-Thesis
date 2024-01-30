@@ -1,0 +1,51 @@
+name: Run tests
+
+on:
+  push:
+    branches: [ main, dev, pg_tests ]
+  pull_request:
+    branches: [ main, dev, pg_tests ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ 3.9, "3.10" ]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python  ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version:  ${{ matrix.python-version }}
+
+    - name: Install NeuroML etc.
+      run: |
+
+        pip install pyneuroml pyelectro
+        pip install neuron
+
+    - name: Get models
+      run: |
+      
+        mkdir Standardised_MD_Script/HayModel
+        git clone https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011.git
+        cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*ml Standardised_MD_Script/HayModel
+
+        find .
+
+    - name: Test generation
+      run: |
+
+        cd Standardised_MD_Script
+        python MD-script.py -model Hay2011L5bPyramidalCell -filepath HayModel/ -netfile HayModel/TestL5PC.net.nml -cellfile HayModel/L5PC.cell.nml -lemsfile HayModel/LEMS_TestL5PC.xml
+        ls -alt Datasheets/Hay2011L5bPyramidalCell 
+
+    - name: Final version info
+      run: |
+        pip list
+        env
