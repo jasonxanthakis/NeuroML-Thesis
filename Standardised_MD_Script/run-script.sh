@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex # prints commands before executing them and exits if any one line fails
 
 #current_directory=$(pwd)
 #cd ~
