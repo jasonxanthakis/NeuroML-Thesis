@@ -4,6 +4,7 @@ from pyneuroml.analysis import generate_current_vs_frequency_curve
 from pyneuroml.analysis.NML2ChannelAnalysis import DEFAULTS, main
 
 import numpy as np
+import matplotlib.pyplot as plt
 import argparse
 import os
 import shutil
@@ -57,6 +58,38 @@ def command_line_parser():
         metavar = "<lemsfile>",
         help = "Get LEMS simulation file",
         default = "False",
+        required = False
+    )
+
+    parser.add_argument(
+        "-start",
+        type = str,
+        metavar = "<startvalue>",
+        help = "Get starting value for range of currents used in simulation for IF and IV graphs",
+        required = False
+    )
+
+    parser.add_argument(
+        "-end",
+        type = str,
+        metavar = "<endvalue>",
+        help = "Get ending value for range of currents used in simulation for IF and IV graphs",
+        required = False
+    )
+
+    parser.add_argument(
+        "-step",
+        type = str,
+        metavar = "<stepvalue>",
+        help = "Get step value for range of currents used in simulation for IF and IV graphs",
+        required = False
+    )
+
+    parser.add_argument(
+        "-list",
+        type = str,
+        metavar = "<list>",
+        help = "List of currents used in simulation for voltage traces",
         required = False
     )
 
@@ -159,9 +192,9 @@ def change_hyperlinks(md_file_path, old_urls, name, change="imgs/"):
     with open(md_file_path, 'w') as file:
         file.write(md_content)
 
-def generate_morphology(file, name, overview_dir, save = True, nogui = False):
+def generate_morphology(file, name, save = True, nogui = True):
     if save:
-        filename = overview_dir + "/imgs/" + name + "2D.png"
+        filename = "Datasheets/" + name + "/imgs/" + name + "2D.png"
     else:
         filename = None
 
@@ -230,11 +263,11 @@ def run_channel_analysis(channels, filepath, overview_dir, save = False, nogui =
 
     return channel_list
 
-def generate_if_iv(file, name, overview_dir, cell, start = -0.5, end = 1, step = 0.05, time = 0.025, duration = 1000, delay = 0, save = False, pre = 0, post = 0, nogui = False):
+def generate_if_iv(file, name, cell, start = -0.5, end = 1, step = 0.05, time = 0.025, duration = 1000, delay = 0, save = False, pre = 0, post = 0, nogui = False):
     if save:
-        vt_name = overview_dir + "/imgs/" + name + "_Vtraces.png"
-        if_name = overview_dir + "/imgs/" + name + "IF.png"
-        iv_name = overview_dir + "/imgs/" + name + "IV.png"
+        vt_name = "Datasheets/" + name + "/imgs/" + name + "_Vtraces.png"
+        if_name = "Datasheets/" + name + "/imgs/" + name + "IF.png"
+        iv_name = "Datasheets/" + name + "/imgs/" + name + "IV.png"
     else:
         vt_name = None
         if_name = None
@@ -260,9 +293,9 @@ def generate_if_iv(file, name, overview_dir, cell, start = -0.5, end = 1, step =
         post_zero_pulse = post
         )
 
-def generate_if_iv_custom(file, name, overview_dir, cell, custom = [-0.5,0,0.5,1], time = 0.025, duration = 1000, delay = 0, save = False, pre = 0, post = 0, nogui = False):
+def generate_if_iv_custom(file, name, cell, custom = [-0.5,0,0.5,1], time = 0.025, duration = 1000, delay = 0, save = False, pre = 0, post = 0, nogui = False):
     if save:
-        vt_name = overview_dir + "/imgs/" + name + "_Vtraces.png"
+        vt_name = "Datasheets/" + name + "/imgs/" + name + "_Vtraces.png"
     else:
         vt_name = None
 
@@ -305,6 +338,8 @@ def generate_custom_plot(dat_file, delay = False, save = False, nogui = False):
 if __name__ == "__main__":
     #Parse Command Line
     args = command_line_parser()
+    args.list = args.list[1:len(args.list)-1].split(',')
+    args.list = [float(item) for item in args.list]
     print(args)
     
     #NeuroML and LEMS files
@@ -324,6 +359,7 @@ if __name__ == "__main__":
     #Get Metadata
     info = nml_doc.summary(show_includes=True)
     channels = extract_included_file_names(lems_file)
+    print(channels)
 
     #If it is allowed to save files, set up the overview directory
     if not args.nosave:
@@ -338,18 +374,20 @@ if __name__ == "__main__":
     #If running simulations is allowed; generate morphology, run channel analysis and analyse electrophysiology
     if not args.nosim:
         #Plot Morphology
-        #generate_morphology(file, name, overview_dir, save = True, nogui = True)
+        generate_morphology(file, name, save = True, nogui = True)
 
         #Channel Analysis
         channel_list = run_channel_analysis(channels, path, overview_dir, save = True, nogui = False)
         channel_analysis_md, files_to_move = move_files("channel_summary", img_dir, overview_dir, name)
         change_hyperlinks(channel_analysis_md, files_to_move, name)
+        print("Succesful Channel Analysis!")
 
         #IV & IF Curves
-        #generate_if_iv(file, name, overview_dir, cell.id, save = True, nogui = False, pre = 200, post = 200)
-        #generate_if_iv_custom(file, name, overview_dir, cell.id, custom = [-1.0, -0.5, 1.0], save = True, pre = 200, post = 200, nogui = False)
+        generate_if_iv(file, name, cell.id, start = float(args.start), end = float(args.end), step = float(args.step), save = True, pre = 200, post = 200, nogui = False)
+        generate_if_iv_custom(file, name, cell.id, custom = list(args.list), save = True, pre = 200, post = 200, nogui = False)
+        print(overview_dir)
 
-        pass
+        print("----Successful Simulation!----")
 
     #If making a MD is allowed, make a MD file
     if not args.nomd and not args.nosave:
