@@ -30,6 +30,7 @@ jobs:
         pip install neuron
 
     - name: Get models
+      run: |
       
         mkdir HayModel
         git clone https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011.git
@@ -38,6 +39,8 @@ jobs:
         find .
 
     - name: Test generation
+      run: |
+      
         cd Standardised_MD_Script
         python MD-script.py -model Hay2011L5bPyramidalCell -filepath HayModel/ -netfile HayModel/TestL5PC.net.nml -cellfile HayModel/L5PC.cell.nml -lemsfile HayModel/LEMS_TestL5PC.xml
         ls -alt Datasheets/Hay2011L5bPyramidalCell 
