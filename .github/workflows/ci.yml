@@ -32,9 +32,9 @@ jobs:
     - name: Get models
       run: |
       
-        mkdir HayModel
+        mkdir Standardised_MD_Script/HayModel
         git clone https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011.git
-        cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*ml HayModel
+        cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*ml Standardised_MD_Script/HayModel
 
         find .
 
