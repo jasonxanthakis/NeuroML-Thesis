@@ -384,7 +384,9 @@ if __name__ == "__main__":
 
         #IV & IF Curves
         generate_if_iv(file, name, cell.id, start = float(args.start), end = float(args.end), step = float(args.step), save = True, pre = 200, post = 200, nogui = False)
+        plt.close('all')
         generate_if_iv_custom(file, name, cell.id, custom = list(args.list), save = True, pre = 200, post = 200, nogui = False)
+        plt.close('all')
         print(overview_dir)
 
         print("----Successful Simulation!----")

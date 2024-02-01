@@ -9,3 +9,4 @@ BahlModel
 x86_64
 clear-folder*
 channel_summary
+local-run-script.sh
