@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex # prints commands before executing them and exits if any one line fails 
 
 #python MD-script.py -model Hay2011L5bPyramidalCell -filepath HayModel/ -netfile HayModel/TestL5PC.net.nml \
 #                    -cellfile HayModel/L5PC.cell.nml -lemsfile HayModel/LEMS_TestL5PC.xml \

@@ -2,11 +2,17 @@ nsimenv3
 *.code-workspace
 HayModel
 BahlModel
+Yao_2022_Model
 *.dat
 *.mod
 *.hoc
 *.xml
+*_nrn.py
+iv_*.net.nml 
 x86_64
 clear-folder*
 channel_summary
+/Standardised_MD_Script/arm64
+/Standardised_MD_Script/checkoutpngs.sh
+
 local-run-script.sh
