@@ -435,7 +435,7 @@ if __name__ == "__main__":
                 change_hyperlinks(chan_analysis_file, [">" + temp + "</h2>"], name, ' id="' + temp + '"')
                 found = search_file(chan_analysis_file, temp)
                 if found:
-                    file.write('<a href="' + chan_analysis_file + '#' + temp + '">' + '<h3>' + temp + '</h3>' + '</a>' + "\n")
+                    file.write('<a href="' + name + "_ChannelInfo.md" + '#' + temp + '">' + '<h3>' + temp + '</h3>' + '</a>' + "\n")
                 else:
                     file.write('<h3>' + temp + '</h3>' + "\n")
             file.write("")
