@@ -1,14 +1,21 @@
 # Hay2011L5bPyramidalCell
 
-<img src="imgs/Hay2011L5bPyramidalCell2D.png" height="300" />
+<h2>Cell Morphology</h2><img src="imgs/Hay2011L5bPyramidalCell2D.png" height="300" />
 
-# Channel Information
+<h2>Channel Information</h2>
 
-Ion Channels: ['Ca_HVA.channel.nml', 'Ca_LVAst.channel.nml', 'Ih.channel.nml', 'K_Pst.channel.nml', 'K_Tst.channel.nml', 'Nap_Et2.channel.nml', 'NaTa_t.channel.nml', 'pas.channel.nml', 'SK_E2.channel.nml', 'SKv3_1.channel.nml']
-
-<table border="1"></table>
-
-# Electrophysiology
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#Ca_HVA"><h3>Ca_HVA</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#Ca_LVAst"><h3>Ca_LVAst</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#Ih"><h3>Ih</h3></a>
+<h3>Im</h3>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#K_Pst"><h3>K_Pst</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#K_Tst"><h3>K_Tst</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#Nap_Et2"><h3>Nap_Et2</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#NaTa_t"><h3>NaTa_t</h3></a>
+<h3>pas</h3>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#SK_E2"><h3>SK_E2</h3></a>
+<a href="/home/ixanthakis/wsl_repos/Dissertation_Repos/NeuroML-Thesis/Standardised_MD_Script/Datasheets/Hay2011L5bPyramidalCell/Hay2011L5bPyramidalCell_ChannelInfo.md#SKv3_1"><h3>SKv3_1</h3></a>
+<h2>Electrophysiology</h2>
 
 <img src="imgs/Hay2011L5bPyramidalCell_Vtraces.png" />
 

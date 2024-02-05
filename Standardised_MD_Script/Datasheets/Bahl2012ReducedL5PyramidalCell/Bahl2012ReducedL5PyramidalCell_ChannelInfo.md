@@ -4,7 +4,7 @@ Channel information
 <p style="font-family:arial">Channel information at: T = 6.3 degC, E_rev = 0 mV, [Ca2+] = 5e-05 mM</p>
 
 
-<h2>nat</h2>
+<h2 id="nat">nat</h2>
 
 Ion: <b>na</b> |
 Conductance expression: <b>g = gmax * m<sup>3</sup> * h </b> |
@@ -33,7 +33,7 @@ NeuroML2 file: <a href="../BahlModel/nat.channel.nml">BahlModel/nat.channel.nml<
 </div>
 </div>
 
-<h2>nap</h2>
+<h2 id="nap">nap</h2>
 
 Ion: <b>na</b> |
 Conductance expression: <b>g = gmax * m </b> |
@@ -45,7 +45,7 @@ NeuroML2 file: <a href="../BahlModel/nap.channel.nml">BahlModel/nap.channel.nml<
 </div>
 </div>
 
-<h2>kca</h2>
+<h2 id="kca">kca</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * n </b> |
@@ -57,7 +57,7 @@ NeuroML2 file: <a href="../BahlModel/kca.channel.nml">BahlModel/kca.channel.nml<
 </div>
 </div>
 
-<h2>kfast</h2>
+<h2 id="kfast">kfast</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * n </b> |
@@ -88,7 +88,7 @@ NeuroML2 file: <a href="../BahlModel/IKM.channel.nml">BahlModel/IKM.channel.nml<
 </div>
 </div>
 
-<h2>sca</h2>
+<h2 id="sca">sca</h2>
 
 Ion: <b>ca</b> |
 Conductance expression: <b>g = gmax * m<sup>2</sup> * h </b> |
@@ -100,7 +100,7 @@ NeuroML2 file: <a href="../BahlModel/sca.channel.nml">BahlModel/sca.channel.nml<
 </div>
 </div>
 
-<h2>ih</h2>
+<h2 id="ih">ih</h2>
 
 Ion: <b>hcn</b> |
 Conductance expression: <b>g = gmax * qq </b> |
