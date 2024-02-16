@@ -3,7 +3,7 @@ nsimenv3
 HayModel
 BahlModel
 Yao_2022_Model
-*.dat
+/Standardised_MD_Script/*.dat
 *.mod
 *.hoc
 *.xml
@@ -16,3 +16,4 @@ channel_summary
 /Standardised_MD_Script/checkoutpngs.sh
 
 local-run-script.sh
+quick-run-script.sh

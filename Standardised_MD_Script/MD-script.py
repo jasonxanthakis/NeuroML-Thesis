@@ -308,6 +308,7 @@ def generate_if_iv(file, name, cell, start = -0.5, end = 1, step = 0.05, time = 
         analysis_delay = delay,
         save_voltage_traces_to = vt_name,
         save_if_figure_to = if_name,
+        save_if_data_to = name + ".if.dat",
         save_iv_figure_to = iv_name,
         pre_zero_pulse = pre,
         post_zero_pulse = post
@@ -405,7 +406,6 @@ if __name__ == "__main__":
         #IV & IF Curves
         generate_if_iv(file, name, cell.id, start = float(args.start), end = float(args.end), step = float(args.step), save = True, pre = 200, post = 200, nogui = False)
         generate_if_iv_custom(file, name, cell.id, custom = list(args.list), save = True, pre = 200, post = 200, nogui = False)
-        print(overview_dir)
 
         print("----Successful Simulation!----")
 
