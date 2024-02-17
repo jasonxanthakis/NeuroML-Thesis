@@ -1,14 +1,21 @@
 # Yao2022HumanL23Pyr
 
-<img src="imgs/Yao2022HumanL23Pyr2D.png" height="300" />
+<h2>Cell Morphology</h2><img src="imgs/Yao2022HumanL23Pyr2D.png" height="300" />
 
-# Channel Information
+<h2>Channel Information</h2>
 
-Ion Channels: ['channels/pas.channel.nml', 'channels/SK.channel.nml', 'channels/K_T.channel.nml', 'channels/K_P.channel.nml', 'channels/Kv3_1.channel.nml', 'channels/Ih.channel.nml', 'channels/NaTg/NaTg.channel.nml', 'channels/Ca_HVA.channel.nml', 'channels/Ca_LVA.channel.nml', 'channels/Nap.channel.nml']
-
-<table border="1"></table>
-
-# Electrophysiology
+<h3>pas</h3>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#SK"><h3>SK</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#K_T"><h3>K_T</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#K_P"><h3>K_P</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#Kv3_1"><h3>Kv3_1</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#Ih"><h3>Ih</h3></a>
+<h3>Im</h3>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#NaTg"><h3>NaTg</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#Ca_HVA"><h3>Ca_HVA</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#Ca_LVA"><h3>Ca_LVA</h3></a>
+<a href="Yao2022HumanL23Pyr_ChannelInfo.md#Nap"><h3>Nap</h3></a>
+<h2>Electrophysiology</h2>
 
 <img src="imgs/Yao2022HumanL23Pyr_Vtraces.png" />
 

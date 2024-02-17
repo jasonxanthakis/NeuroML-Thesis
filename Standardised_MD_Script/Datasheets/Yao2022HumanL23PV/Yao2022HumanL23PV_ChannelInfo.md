@@ -4,7 +4,7 @@ Channel information
 <p style="font-family:arial">Channel information at: T = 6.3 degC, E_rev = 0 mV, [Ca2+] = 5e-05 mM</p>
 
 
-<h2>NaTg</h2>
+<h2 id="NaTg">NaTg</h2>
 
 Ion: <b>na</b> |
 Conductance expression: <b>g = gmax * m<sup>3</sup> * h </b> |
@@ -116,7 +116,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>Nap</h2>
+<h2 id="Nap">Nap</h2>
 
 Ion: <b>na</b> |
 Conductance expression: <b>g = gmax * m<sup>3</sup> * h </b> |
@@ -134,7 +134,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>K_P</h2>
+<h2 id="K_P">K_P</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * m<sup>2</sup> * h </b> |
@@ -152,7 +152,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>K_T</h2>
+<h2 id="K_T">K_T</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * m<sup>4</sup> * h </b> |
@@ -170,7 +170,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>Kv3_1</h2>
+<h2 id="Kv3_1">Kv3_1</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * m </b> |
@@ -185,7 +185,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>SK</h2>
+<h2 id="SK">SK</h2>
 
 Ion: <b>k</b> |
 Conductance expression: <b>g = gmax * z </b> |
@@ -201,7 +201,7 @@ Comment from original mod file:
 </div>
 </div>
 
-<h2>Ca_HVA</h2>
+<h2 id="Ca_HVA">Ca_HVA</h2>
 
 Ion: <b>ca</b> |
 Conductance expression: <b>g = gmax * m<sup>2</sup> * h </b> |
@@ -216,7 +216,7 @@ Reuveni, Friedman, Amitai, and Gutnick, J.Neurosci. 1993</details>
 </div>
 </div>
 
-<h2>Ca_LVA</h2>
+<h2 id="Ca_LVA">Ca_LVA</h2>
 
 Ion: <b>ca</b> |
 Conductance expression: <b>g = gmax * m<sup>2</sup> * h </b> |
@@ -234,7 +234,7 @@ Note: mtau is an approximation from the plots
 </div>
 </div>
 
-<h2>Ih</h2>
+<h2 id="Ih">Ih</h2>
 
 Ion: <b>hcn</b> |
 Conductance expression: <b>g = gmax * m </b> |

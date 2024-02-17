@@ -137,6 +137,26 @@ def command_line_parser():
     
     return parser.parse_args()
 
+
+def search_file(file_path, search_string):
+    """
+    Check if a certain string is present in a file.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+
+            if search_string in content:
+                return True
+            else:
+                return False
+    except FileNotFoundError:
+        print(f"File '{file_path}' not found.")
+        return False
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
+
 def extract_included_file_names(file_path):
     included_file_names = []
     try:
@@ -181,13 +201,13 @@ def move_files(source, destination, md_destination, name):
 
     return destination_path, files_to_move
 
-def change_hyperlinks(md_file_path, old_urls, name, change="imgs/"):
+def change_hyperlinks(md_file_path, old_urls, name, change):
     with open(md_file_path, 'r') as file:
         md_content = file.read()
 
     #Replace old png locations in MD with new locations
     for i in range(len(old_urls)):
-        md_content = md_content.replace(old_urls[i], change + name + old_urls[i])
+        md_content = md_content.replace(old_urls[i], change + old_urls[i])
 
     with open(md_file_path, 'w') as file:
         file.write(md_content)
@@ -288,6 +308,7 @@ def generate_if_iv(file, name, cell, start = -0.5, end = 1, step = 0.05, time = 
         analysis_delay = delay,
         save_voltage_traces_to = vt_name,
         save_if_figure_to = if_name,
+        save_if_data_to = name + ".if.dat",
         save_iv_figure_to = iv_name,
         pre_zero_pulse = pre,
         post_zero_pulse = post
@@ -379,19 +400,19 @@ if __name__ == "__main__":
         #Channel Analysis
         channel_list = run_channel_analysis(channels, path, overview_dir, save = True, nogui = False)
         channel_analysis_md, files_to_move = move_files("channel_summary", img_dir, overview_dir, name)
-        change_hyperlinks(channel_analysis_md, files_to_move, name)
+        change_hyperlinks(channel_analysis_md, files_to_move, name, change = "imgs/" + name)
         print("Succesful Channel Analysis!")
 
         #IV & IF Curves
         generate_if_iv(file, name, cell.id, start = float(args.start), end = float(args.end), step = float(args.step), save = True, pre = 200, post = 200, nogui = False)
         generate_if_iv_custom(file, name, cell.id, custom = list(args.list), save = True, pre = 200, post = 200, nogui = False)
-        print(overview_dir)
 
         print("----Successful Simulation!----")
 
     #If making a MD is allowed, make a MD file
     if not args.nomd and not args.nosave:
         file_name = overview_dir + "/" + name + ".md"
+        chan_analysis_file = overview_dir + "/" + name + "_ChannelInfo.md"
 
         #Create the MD file if doesn't exist
         try:
@@ -403,22 +424,23 @@ if __name__ == "__main__":
         #Make the MD file
         with open(file_name, "w") as file:
             file.write("# " + name + "\n\n")  #Write Cell Name
+            file.write("<h2>Cell Morphology</h2>")
             file.write('<img src="imgs/' + name + '2D.png" height="300" />' + "\n\n")
             #Add 3D Morphology
             file.write("")
             
-            file.write("# Channel Information" + "\n\n")
-            file.write("Ion Channels: " + str(channel_list) + "\n\n")
-            file.write('<table border="1">')
-            """
-            file.write("    <tr>")
-            file.write("        <td>Channels</td>")
-            file.write("    </tr>")
-            """
-            file.write('</table>' + "\n\n")
+            file.write("<h2>Channel Information</h2>" + "\n\n")
+            for i in range(len(channels)):
+                temp = channels[i].split("/")[-1].split(".")[0]
+                change_hyperlinks(chan_analysis_file, [">" + temp + "</h2>"], name, ' id="' + temp + '"')
+                found = search_file(chan_analysis_file, temp)
+                if found:
+                    file.write('<a href="' + name + "_ChannelInfo.md" + '#' + temp + '">' + '<h3>' + temp + '</h3>' + '</a>' + "\n")
+                else:
+                    file.write('<h3>' + temp + '</h3>' + "\n")
             file.write("")
 
-            file.write("# Electrophysiology" + "\n\n")
+            file.write("<h2>Electrophysiology</h2>" + "\n\n")
             file.write('<img src="imgs/' + name + '_Vtraces.png" />' + "\n\n")
             file.write('<img src="imgs/' + name + 'IF.png" />' + "\n\n")
             file.write('<img src="imgs/' + name + 'IV.png" />' + "\n\n")

@@ -35,6 +35,14 @@ jobs:
         mkdir Standardised_MD_Script/HayModel
         git clone https://github.com/OpenSourceBrain/L5bPyrCellHayEtAl2011.git
         cp L5bPyrCellHayEtAl2011/neuroConstruct/generatedNeuroML2/*ml Standardised_MD_Script/HayModel
+      
+        mkdir Standardised_MD_Script/BahlModel
+        git clone https://github.com/OpenSourceBrain/BahlEtAl2012_ReducedL5PyrCell.git
+        cp BahlEtAl2012_ReducedL5PyrCell/NeuroML2/*ml Standardised_MD_Script/BahlModel
+
+        
+        git clone https://github.com/sanjayankur31/Human-L2-3-Cortical-Microcircuit
+        mv Human-L2-3-Cortical-Microcircuit Standardised_MD_Script/Yao_2022_Model
 
         find .
 
@@ -42,8 +50,8 @@ jobs:
       run: |
 
         cd Standardised_MD_Script
-        python MD-script.py -model Hay2011L5bPyramidalCell -filepath HayModel/ -netfile HayModel/TestL5PC.net.nml -cellfile HayModel/L5PC.cell.nml -lemsfile HayModel/LEMS_TestL5PC.xml
-        ls -alt Datasheets/Hay2011L5bPyramidalCell 
+
+        ./run-script.sh
 
     - name: Final version info
       run: |
