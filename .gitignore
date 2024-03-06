@@ -17,3 +17,6 @@ channel_summary
 
 local-run-script.sh
 quick-run-script.sh
+
+!RateBased.xml
+!RateBasedSpecifications_adjusted.xml
