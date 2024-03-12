@@ -3,7 +3,7 @@ nsimenv3
 HayModel
 BahlModel
 Yao_2022_Model
-/Standardised_MD_Script/*.dat
+*.dat
 *.mod
 *.hoc
 *.xml
@@ -20,3 +20,7 @@ quick-run-script.sh
 
 !RateBased.xml
 !RateBasedSpecifications_adjusted.xml
+
+/Figures_for_Paper/Fig1
+/Figures_for_Paper/Fig2
+/Figures_for_Paper/RateBased.xml
